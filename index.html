@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prosa Café Bar | Do café ao drink na Trindade, São Gonçalo</title>
+<meta name="description" content="Prosa Café Bar: cafeteria, bar e restaurante na Trindade, São Gonçalo. Café da manhã, almoço executivo, pausa doce, happy hour, karaokê e buffet de café da manhã aos domingos.">
+<meta property="og:title" content="Prosa Café Bar — Do café ao drink">
+<meta property="og:description" content="Cafeteria, bar e restaurante na Trindade, São Gonçalo. Um lugar, vários momentos.">
+<meta property="og:image" content="images/cappuccino.jpg">
+<meta name="theme-color" content="#15100E">
+<link rel="icon" href="images/logo-prosa.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=Manrope:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
+<!-- Dados estruturados (SEO local) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "Prosa Café Bar",
+  "servesCuisine": ["Café", "Brasileira", "Drinks"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Dr. Humberto Soeiro de Carvalho, 508 - Trindade",
+    "addressLocality": "São Gonçalo",
+    "addressRegion": "RJ",
+    "postalCode": "24456-250",
+    "addressCountry": "BR"
+  },
+  "telephone": "+55 21 99686-0795",
+  "menu": "https://prosacafe.pedido.app.br/cardapio",
+  "sameAs": ["https://www.instagram.com/prosacafebar/"]
+}
+</script>
+
+<style>
+/* =========================================================
+   PROSA CAFÉ BAR — Landing page demonstrativa
+   Paleta derivada do logotipo (gradiente coral → ameixa),
+   das fotos (mesas escuras, madeira, luz quente) e do neon
+   amarelo do salão.
+   ========================================================= */
+:root{
+  --espresso:#15100E;   /* fundo noite */
+  --espresso-2:#1F1714; /* cards no escuro */
+  --crema:#F6EEE4;      /* fundo manhã */
+  --latte:#EADBCB;      /* fundo tarde */
+  --ink:#2B1E1A;        /* texto principal no claro */
+  --ink-soft:#6B5850;   /* texto secundário no claro */
+  --coral:#E0603F;      /* destaque (logo) */
+  --coral-dk:#C2492B;   /* hover/contraste em fundo claro */
+  --plum:#7A3672;       /* secundária (logo) */
+  --neon:#F4D35E;       /* neon do salão — uso mínimo */
+  --on-dark:#F6EEE4;
+  --on-dark-soft:#C9B8AC;
+  --radius:18px;
+  --serif:"Bodoni Moda", "Didot", Georgia, serif;
+  --sans:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --grad:linear-gradient(120deg,var(--coral) 0%,#B44A57 50%,var(--plum) 100%);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--crema);line-height:1.6;font-size:16px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;margin:0;letter-spacing:-.01em}
+p{margin:0}
+section[id]{scroll-margin-top:74px}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-dk)}
+.dark .eyebrow{color:var(--coral)}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:16px;z-index:100;background:#fff;padding:8px 14px}
+
+/* ---------- Botões ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;padding:.95em 1.5em;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease;border:1.5px solid transparent;white-space:nowrap}
+.btn svg{width:1.15em;height:1.15em;flex:none}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 10px 26px -10px rgba(122,54,114,.65)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(122,54,114,.75)}
+.btn-ghost{border-color:currentColor;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--crema)}
+.dark .btn-ghost{color:var(--on-dark)}
+.dark .btn-ghost:hover{background:var(--on-dark);color:var(--espresso)}
+
+/* ---------- Header ---------- */
+.header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s,backdrop-filter .3s}
+.header.scrolled{background:rgba(246,238,228,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(43,30,26,.08)}
+.header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;border-radius:50%}
+.brand span{font-family:var(--serif);font-size:1.45rem;font-weight:600;letter-spacing:.02em}
+.brand small{display:block;font-family:var(--sans);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-top:2px}
+.nav{display:none}
+.nav a{text-decoration:none;font-weight:600;font-size:.92rem;position:relative;padding:4px 0}
+.nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;background:var(--coral);transition:right .3s}
+.nav a:hover::after{right:0}
+.header .btn{padding:.7em 1.15em;font-size:.88rem}
+.header-cta{display:none}
+.menu-btn{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(43,30,26,.2);background:transparent;display:grid;place-items:center;cursor:pointer}
+.menu-btn span{display:block;width:18px;height:2px;background:var(--ink);position:relative;transition:.3s}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);transition:.3s}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+.menu-open .menu-btn span{background:transparent}
+.menu-open .menu-btn span::before{top:0;transform:rotate(45deg)}
+.menu-open .menu-btn span::after{top:0;transform:rotate(-45deg)}
+.mobile-nav{position:fixed;inset:74px 0 0;background:var(--crema);padding:28px 16px 40px;display:flex;flex-direction:column;gap:6px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:.3s;z-index:49}
+.menu-open .mobile-nav{transform:none;opacity:1;pointer-events:auto}
+.mobile-nav a:not(.btn){font-family:var(--serif);font-size:2rem;text-decoration:none;padding:6px 0;border-bottom:1px solid rgba(43,30,26,.1)}
+.mobile-nav .btn{margin-top:24px}
+@media (min-width:960px){
+  .nav{display:flex;gap:30px}
+  .header-cta{display:inline-flex}
+  .menu-btn,.mobile-nav{display:none}
+}
+
+/* ---------- Hero ---------- */
+.hero{padding:118px 0 70px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:620px;height:620px;right:-220px;top:-180px;border-radius:50%;background:radial-gradient(circle,rgba(224,96,63,.20),transparent 65%);pointer-events:none}
+.hero-grid{display:grid;gap:44px;align-items:center}
+.hero h1{font-size:clamp(3.3rem,13vw,7.6rem);font-weight:500}
+.hero h1 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.hero .lead{font-size:1.12rem;color:var(--ink-soft);max-width:30rem;margin:22px 0 30px}
+.hero .lead strong{color:var(--ink)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:30px;font-size:.88rem;color:var(--ink-soft);font-weight:600}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.hero-meta svg{width:16px;height:16px;color:var(--coral-dk)}
+.hero-visual{position:relative;height:clamp(420px,110vw,600px)}
+.hero-visual figure{margin:0;position:absolute;border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 60px -25px rgba(43,30,26,.55)}
+.hero-visual img{width:100%;height:100%;object-fit:cover}
+.hv-cafe{left:0;top:0;width:60%;height:78%}
+.hv-drink{right:0;bottom:0;width:56%;height:66%;border:6px solid var(--crema)}
+.hv-label{position:absolute;bottom:12px;left:12px;background:rgba(21,16,14,.72);backdrop-filter:blur(6px);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
+.badge{position:absolute;right:4%;top:2%;width:116px;height:116px;z-index:2}
+.badge-ring{position:absolute;inset:0;animation:spin 22s linear infinite}
+.badge-ring text{font-family:var(--sans);font-size:10.4px;font-weight:700;letter-spacing:.24em;fill:var(--ink)}
+.badge-core{position:absolute;inset:26px;border-radius:50%;background:var(--grad);display:grid;place-items:center}
+.badge-core img{width:78%;}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (min-width:960px){
+  .hero{padding:150px 0 100px;min-height:100vh;display:flex;align-items:center}
+  .hero-grid{grid-template-columns:1.05fr .95fr;gap:60px}
+  .hero-visual{height:620px}
+  .badge{width:140px;height:140px;right:auto;left:48%;top:-30px}
+  .badge-core{inset:30px}
+}
+
+/* ---------- Faixa (marquee) ---------- */
+.marquee{background:var(--grad);color:#fff;overflow:hidden;padding:18px 0}
+.marquee-track{display:flex;gap:44px;width:max-content;animation:marquee 32s linear infinite}
+.marquee span{font-family:var(--serif);font-style:italic;font-size:1.6rem;white-space:nowrap;display:flex;align-items:center;gap:44px}
+.marquee span::after{content:"✦";font-style:normal;font-size:.9rem;opacity:.8}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- Momentos do dia ---------- */
+.moments{padding:96px 0 110px;background:linear-gradient(180deg,var(--crema) 0%,var(--latte) 100%)}
+.section-head{display:grid;gap:18px;margin-bottom:46px}
+.section-head h2{font-size:clamp(2.4rem,7vw,4.4rem)}
+.section-head p{color:var(--ink-soft);max-width:34rem;font-size:1.05rem}
+.dark .section-head p{color:var(--on-dark-soft)}
+@media (min-width:960px){.section-head{grid-template-columns:1fr 1fr;align-items:end}}
+
+.timeline{display:grid;gap:18px;grid-auto-flow:column;grid-auto-columns:82%;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 16px 22px;margin-inline:-16px;scrollbar-width:none}
+.timeline::-webkit-scrollbar{display:none}
+.moment{scroll-snap-align:start;background:#fff;border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 40px -28px rgba(43,30,26,.5);transition:transform .35s ease}
+.moment:hover{transform:translateY(-6px)}
+.moment .ph{aspect-ratio:4/3.4;overflow:hidden}
+.moment .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.moment:hover .ph img{transform:scale(1.05)}
+.moment .body{padding:20px 20px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
+.moment time{font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-dk)}
+.moment h3{font-size:1.65rem}
+.moment p{color:var(--ink-soft);font-size:.95rem}
+.moment.night{background:var(--espresso);color:var(--on-dark)}
+.moment.night p{color:var(--on-dark-soft)}
+.moment.night time{color:var(--neon)}
+.timeline-hint{display:flex;align-items:center;gap:10px;font-size:.8rem;font-weight:600;color:var(--ink-soft);margin-top:4px}
+.timeline-hint i{flex:1;height:2px;background:linear-gradient(90deg,var(--coral),var(--plum),var(--espresso));border-radius:2px}
+@media (min-width:960px){
+  .timeline{grid-auto-flow:row;grid-template-columns:repeat(5,1fr);overflow:visible;margin:0;padding:0}
+  .moment:nth-child(even){margin-top:46px}
+  .timeline-hint{display:none}
+}
+
+/* ---------- Seções escuras ---------- */
+.dark{background:var(--espresso);color:var(--on-dark)}
+
+/* ---------- Cardápio (galeria editorial) ---------- */
+.menu{padding:110px 0}
+.menu-grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.dish{position:relative;margin:0;border-radius:var(--radius);overflow:hidden;background:var(--espresso-2);min-height:220px}
+.dish img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+.dish:hover img{transform:scale(1.06)}
+.dish figcaption{position:absolute;inset:auto 0 0;padding:44px 16px 16px;background:linear-gradient(0deg,rgba(15,10,9,.92),rgba(15,10,9,0));}
+.dish h3{font-size:1.35rem;color:#fff}
+.dish p{font-size:.84rem;color:var(--on-dark-soft);margin-top:4px;line-height:1.45}
+.dish.lg{grid-column:span 2;min-height:360px}
+@media (max-width:959px){.dish:not(.lg){aspect-ratio:3/4}.dish.d6{grid-column:span 2;aspect-ratio:4/3}}
+.menu-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-top:40px;padding:26px;border:1px solid rgba(246,238,228,.14);border-radius:var(--radius)}
+.menu-cta p{font-family:var(--serif);font-size:1.5rem;max-width:26ch}
+@media (min-width:720px){.dish h3{font-size:1.6rem}.dish p{font-size:.9rem}}
+@media (min-width:960px){
+  .menu-grid{grid-template-columns:repeat(12,1fr);grid-auto-rows:150px;gap:18px}
+  .dish{min-height:0}
+  .menu-grid .d1{grid-column:1/6;grid-row:1/5}
+  .menu-grid .d2{grid-column:6/9;grid-row:1/3}
+  .menu-grid .d3{grid-column:9/13;grid-row:1/4}
+  .menu-grid .d4{grid-column:6/9;grid-row:3/5}
+  .menu-grid .d5{grid-column:1/5;grid-row:5/8}
+  .menu-grid .d6{grid-column:5/9;grid-row:5/8}
+  .menu-grid .d7{grid-column:9/13;grid-row:4/8}
+  .dish.lg{min-height:0}
+}
+
+/* ---------- Espaço ---------- */
+.space{padding:0 0 110px}
+.space-banner{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/10}
+.space-banner img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.space-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(21,16,14,.55),rgba(21,16,14,0) 45%)}
+.space-grid{display:grid;gap:40px;margin-top:56px}
+.space-grid h2{font-size:clamp(2.3rem,6vw,3.8rem)}
+.space-grid .intro p{color:var(--on-dark-soft);margin-top:18px;max-width:32rem;font-size:1.05rem}
+.uses{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.uses li{display:grid;grid-template-columns:52px 1fr;gap:16px;padding:22px 0;border-top:1px solid rgba(246,238,228,.12)}
+.uses li:last-child{border-bottom:1px solid rgba(246,238,228,.12)}
+.uses .ic{width:52px;height:52px;border-radius:50%;background:rgba(224,96,63,.14);display:grid;place-items:center;color:var(--coral)}
+.uses .ic svg{width:24px;height:24px}
+.uses h3{font-family:var(--sans);font-weight:700;font-size:1.05rem;letter-spacing:0}
+.uses p{color:var(--on-dark-soft);font-size:.95rem;margin-top:4px}
+@media (min-width:960px){
+  .space-banner{aspect-ratio:21/8.6}
+  .space-grid{grid-template-columns:1fr 1fr;gap:80px}
+}
+
+/* ---------- Eventos ---------- */
+.events{padding:110px 0;background:var(--grad);color:#fff;position:relative;overflow:hidden}
+.events::after{content:"";position:absolute;inset:0;background:url("images/logo-prosa-branco.png") no-repeat right -120px center/520px;opacity:.07;pointer-events:none}
+.events .eyebrow{color:#FFE2D6}
+.events-grid{display:grid;gap:22px;position:relative;z-index:1}
+.events h2{font-size:clamp(2.4rem,7vw,4.4rem);max-width:13ch}
+.events .lead{margin-top:18px;max-width:34rem;font-size:1.05rem;color:#FBEAE4}
+.event-card{background:rgba(21,16,14,.22);border:1px solid rgba(255,255,255,.22);border-radius:var(--radius);padding:28px;backdrop-filter:blur(4px)}
+.event-card h3{font-size:1.9rem}
+.event-card p{margin-top:10px;color:#FBEAE4}
+.event-card ul{margin:16px 0 22px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.event-card li{font-size:.8rem;font-weight:700;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.14)}
+.btn-light{background:#fff;color:var(--plum)}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 14px 26px -12px rgba(0,0,0,.5)}
+@media (min-width:960px){
+  .events-grid{grid-template-columns:1.1fr 1fr 1fr;align-items:stretch;gap:24px}
+  .event-card{display:flex;flex-direction:column}
+  .event-card .btn{margin-top:auto;align-self:flex-start}
+}
+
+/* ---------- Na mídia ---------- */
+.press{padding:56px 0;background:var(--latte)}
+.press .wrap{display:grid;gap:14px;align-items:center;text-align:center;justify-items:center}
+.press blockquote{margin:0;font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.3rem);font-style:italic;max-width:38ch;line-height:1.2}
+.press cite{font-style:normal;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--ink-soft)}
+
+/* ---------- Visite ---------- */
+.visit{padding:110px 0}
+.visit-grid{display:grid;gap:40px}
+.visit h2{font-size:clamp(2.4rem,7vw,4.2rem)}
+.addr{font-size:1.1rem;margin-top:20px;color:var(--on-dark-soft)}
+.addr strong{color:var(--on-dark);display:block;font-size:1.2rem;font-weight:600}
+.agenda{margin:34px 0;display:grid;gap:0}
+.agenda div{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-top:1px solid rgba(246,238,228,.12);flex-wrap:wrap}
+.agenda div:last-child{border-bottom:1px solid rgba(246,238,228,.12)}
+.agenda dt{font-weight:700}
+.agenda dd{margin:0;color:var(--on-dark-soft)}
+.visit-actions{display:flex;flex-wrap:wrap;gap:12px}
+.map{border-radius:var(--radius);overflow:hidden;min-height:360px;background:var(--espresso-2);border:1px solid rgba(246,238,228,.12)}
+.map iframe{width:100%;height:100%;min-height:360px;border:0;filter:grayscale(.35) contrast(1.05)}
+@media (min-width:960px){.visit-grid{grid-template-columns:1fr 1.1fr;gap:70px;align-items:stretch}}
+
+/* ---------- CTA final + Rodapé ---------- */
+.final{padding:30px 0 110px;text-align:center}
+.final h2{font-size:clamp(2.6rem,9vw,6rem)}
+.final h2 em{font-style:italic;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+.final p{color:var(--on-dark-soft);margin:18px auto 30px;max-width:30rem}
+.final .hero-actions{justify-content:center}
+.footer{border-top:1px solid rgba(246,238,228,.1);padding:34px 0 100px;font-size:.88rem;color:var(--on-dark-soft)}
+.footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
+.footer .brand span{color:var(--on-dark)}
+.footer .brand small{color:var(--on-dark-soft)}
+.footer nav{display:flex;gap:20px;flex-wrap:wrap}
+.footer nav a{text-decoration:none}
+.footer nav a:hover{color:var(--on-dark)}
+@media (min-width:960px){.footer{padding-bottom:34px}}
+
+/* ---------- WhatsApp flutuante ---------- */
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 12px 26px -8px rgba(0,0,0,.45);transition:transform .25s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:30px;height:30px}
+
+/* ---------- Animações de entrada ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- =================== CABEÇALHO =================== -->
+<header class="header" id="topo">
+  <div class="wrap">
+    <a href="#topo" class="brand" aria-label="Prosa Café Bar — início">
+      <img src="images/logo-prosa.jpg" alt="Logotipo do Prosa Café Bar" width="44" height="44">
+      <span>Prosa<small>Café · Bar</small></span>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#momentos">Momentos</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#espaco">O espaço</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#visite">Visite</a>
+    </nav>
+    <a class="btn btn-primary header-cta js-wa" data-msg="Olá, Prosa! Gostaria de fazer uma reserva." href="https://wa.me/5521996860795" target="_blank" rel="noopener">Reservar</a>
+    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav"><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav" aria-label="Menu móvel">
+  <a href="#momentos">Momentos</a>
+  <a href="#cardapio">Cardápio</a>
+  <a href="#espaco">O espaço</a>
+  <a href="#eventos">Eventos</a>
+  <a href="#visite">Visite</a>
+  <a class="btn btn-primary js-wa" data-msg="Olá, Prosa! Gostaria de fazer uma reserva." href="https://wa.me/5521996860795" target="_blank" rel="noopener">Reservar pelo WhatsApp</a>
+</nav>
+
+<main id="conteudo">
+
+<!-- =================== HERO =================== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <p class="eyebrow">Cafeteria · Bar · Restaurante — Trindade, São Gonçalo</p>
+      <h1>Do café<br>ao <em>drink.</em></h1>
+      <p class="lead">Café da manhã, almoço, pausa doce, happy hour e karaokê. <strong>Um lugar, vários momentos</strong> — e sempre um cantinho para a próxima prosa.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary js-wa" data-msg="Olá, Prosa! Gostaria de fazer uma reserva." href="https://wa.me/5521996860795" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.2-1.36A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.08.8.82-3-.2-.31a8.2 8.2 0 1 1 6.94 3.84Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.96-.14.17-.29.19-.53.06a6.7 6.7 0 0 1-3.34-2.92c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.43l-.75-1.82c-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.74 2.74 0 0 0-.86 2.04 4.76 4.76 0 0 0 1 2.53 10.9 10.9 0 0 0 4.17 3.69c1.55.67 2.16.72 2.94.6.47-.07 1.46-.6 1.66-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.16-.47-.28Z"/></svg>
+          Reservar pelo WhatsApp</a>
+        <a class="btn btn-ghost" href="https://prosacafe.pedido.app.br/cardapio" target="_blank" rel="noopener">Ver cardápio</a>
+      </div>
+      <div class="hero-meta">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Pertinho da Praça da Trindade</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Buffet de café da manhã aos domingos</span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal" aria-label="Fotos do Prosa">
+      <figure class="hv-cafe">
+        <img src="images/cappuccino.jpg" alt="Cappuccino em camadas servido em taça de vidro no balcão do Prosa" fetchpriority="high">
+        <span class="hv-label">Do café…</span>
+      </figure>
+      <figure class="hv-drink">
+        <img src="images/drink-lingua-de-sogra.jpg" alt="Drink autoral Língua de Sogra, alaranjado, com hortelã e pimenta dedo-de-moça">
+        <span class="hv-label">…ao drink</span>
+      </figure>
+      <div class="badge" aria-hidden="true">
+        <svg class="badge-ring" viewBox="0 0 120 120">
+          <defs><path id="circ" d="M60,60 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/></defs>
+          <text><textPath href="#circ">QUANDO A PROSA É BOA · O TEMPO VOA · </textPath></text>
+        </svg>
+        <div class="badge-core"><img src="images/logo-prosa-branco.png" alt=""></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Faixa animada -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Café da manhã</span><span>Almoço executivo</span><span>Pausa doce</span><span>Happy hour</span><span>Karaokê</span><span>Drinks autorais</span>
+    <span>Café da manhã</span><span>Almoço executivo</span><span>Pausa doce</span><span>Happy hour</span><span>Karaokê</span><span>Drinks autorais</span>
+  </div>
+</div>
+
+<!-- =================== MOMENTOS DO DIA =================== -->
+<section class="moments" id="momentos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow">Um lugar, vários momentos</p>
+        <h2>Do primeiro café<br>ao último brinde.</h2>
+      </div>
+      <p>Comece o dia com café da manhã, aproveite o almoço executivo, faça uma pausa no meio da tarde e termine com chopp gelado, drinks e petiscos. No Prosa, sempre tem uma opção para o seu momento.</p>
+    </div>
+
+    <div class="timeline" role="list">
+      <article class="moment reveal" role="listitem">
+        <div class="ph"><img src="images/cafe-da-manha.jpg" alt="Combo de café da manhã com pão, torradas, frios, frutas, suco de laranja e café" loading="lazy"></div>
+        <div class="body">
+          <time>Manhã</time>
+          <h3>Café da manhã</h3>
+          <p>Combo completo para 1 ou 2 pessoas. Aos domingos, buffet de café da manhã das 8h30 às 11h.</p>
+        </div>
+      </article>
+      <article class="moment reveal" role="listitem">
+        <div class="ph"><img src="images/executivo.jpg" alt="Prato executivo com bife acebolado, arroz e batata frita" loading="lazy"></div>
+        <div class="body">
+          <time>Seg a sex · 11h30 às 16h</time>
+          <h3>Almoço</h3>
+          <p>Executivos e prato feito com sobremesa — várias opções, comida gostosa e preço justo.</p>
+        </div>
+      </article>
+      <article class="moment reveal" role="listitem">
+        <div class="ph"><img src="images/pausa-doce.jpg" alt="Bolinho de chocolate sob cúpula de vidro, calda de chocolate e cappuccino com chantilly" loading="lazy"></div>
+        <div class="body">
+          <time>Tarde</time>
+          <h3>Pausa doce</h3>
+          <p>Bolinho de chocolate com calda e cappuccino tradicional. Aquele respiro no meio do dia.</p>
+        </div>
+      </article>
+      <article class="moment night reveal" role="listitem">
+        <div class="ph"><img src="images/drink-lingua-de-sogra.jpg" alt="Drink autoral Língua de Sogra sobre mesa escura" loading="lazy"></div>
+        <div class="body">
+          <time>Seg a qui · 17h às 22h</time>
+          <h3>Happy hour</h3>
+          <p>O expediente acabou. Chopp, caipirinha, drinks selecionados e petiscos com os amigos.</p>
+        </div>
+      </article>
+      <article class="moment night reveal" role="listitem">
+        <div class="ph"><img src="images/pasteis.jpg" alt="Cesta de pastéis dourados" loading="lazy"></div>
+        <div class="body">
+          <time>Sextas · a partir das 20h</time>
+          <h3>Karaokê</h3>
+          <p>Sextou com microfone na mão: chama os amigos, aquece a voz e vem brilhar no palco do Prosa.</p>
+        </div>
+      </article>
+    </div>
+    <p class="timeline-hint" aria-hidden="true">Arraste <i></i> manhã → noite</p>
+  </div>
+</section>
+
+<!-- =================== CARDÁPIO =================== -->
+<section class="menu dark" id="cardapio">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow">Cardápio</p>
+        <h2>Você vem pelo café… e já planeja o próximo pedido.</h2>
+      </div>
+      <p>Do café da manhã completo ao drink autoral, passando pelos executivos, pastéis e aquela pausa doce: tem um sabor para cada momento do seu dia.</p>
+    </div>
+
+    <div class="menu-grid">
+      <figure class="dish d1 lg reveal">
+        <img src="images/cafe-da-manha.jpg" alt="Café da manhã completo do Prosa" loading="lazy">
+        <figcaption><h3>Café da manhã</h3><p>Combo completo para 1 ou 2 pessoas.</p></figcaption>
+      </figure>
+      <figure class="dish d2 reveal">
+        <img src="images/bruschetta-frutas.jpg" alt="Bruschetta de muçarela de búfala e taça de salada de frutas" loading="lazy">
+        <figcaption><h3>Bruschetta ou frutas?</h3><p>Muçarela de búfala no pão Petrópolis.</p></figcaption>
+      </figure>
+      <figure class="dish d3 reveal">
+        <img src="images/drink-lingua-de-sogra.jpg" alt="Drink Língua de Sogra" loading="lazy">
+        <figcaption><h3>Língua de Sogra</h3><p>Um drink autoral do Prosa.</p></figcaption>
+      </figure>
+      <figure class="dish d4 reveal">
+        <img src="images/pausa-doce.jpg" alt="Bolinho de chocolate e cappuccino" loading="lazy">
+        <figcaption><h3>Uma pausa doce</h3><p>Bolinho com calda + cappuccino.</p></figcaption>
+      </figure>
+      <figure class="dish d5 reveal">
+        <img src="images/executivo.jpg" alt="Prato executivo com bife, arroz e fritas" loading="lazy">
+        <figcaption><h3>Executivos</h3><p>Várias opções, todos os dias.</p></figcaption>
+      </figure>
+      <figure class="dish d6 reveal">
+        <img src="images/salada-caesar.jpg" alt="Salada Caesar com frango e croutons" loading="lazy">
+        <figcaption><h3>Salada Caesar</h3><p>Com frango, para quem ama uma boa salada.</p></figcaption>
+      </figure>
+      <figure class="dish d7 lg reveal">
+        <img src="images/pasteis.jpg" alt="Pastéis fritos em cesta de metal" loading="lazy">
+        <figcaption><h3>Pastéis</h3><p>Costela, queijo e camarão com Catupiry.</p></figcaption>
+      </figure>
+    </div>
+
+    <div class="menu-cta reveal">
+      <p>Cardápio completo e pedidos online, direto do celular.</p>
+      <a class="btn btn-primary" href="https://prosacafe.pedido.app.br/cardapio" target="_blank" rel="noopener">Abrir cardápio online →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== O ESPAÇO =================== -->
+<section class="space dark" id="espaco">
+  <div class="wrap">
+    <div class="space-banner reveal">
+      <img src="images/ambiente.jpg" alt="Salão do Prosa com luminárias de filamento, plantas e letreiro neon 'Quando a prosa é boa, o tempo voa'" loading="lazy">
+    </div>
+
+    <div class="space-grid">
+      <div class="intro reveal">
+        <p class="eyebrow">O espaço</p>
+        <h2>Um cantinho aconchegante para cada tipo de encontro.</h2>
+        <p>Luz quente, sofá de veludo, plantas e aquele clima que faz a conversa render. Vem sozinho, a dois, com a família ou com a turma toda.</p>
+      </div>
+      <ul class="uses reveal">
+        <li>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+          <div><h3>Trabalhar ou fazer uma reunião</h3><p>Um cantinho confortável e climatizado para produzir, conversar e sair da rotina.</p></div>
+        </li>
+        <li>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14.5 20c.2-2.6 1.6-4.6 3.5-4.6 2 0 3 1.6 3 4.6"/></svg></span>
+          <div><h3>Reunir família e amigos</h3><p>Aquele “precisamos marcar” finalmente vira “que dia a gente vai?”.</p></div>
+        </li>
+        <li>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v3M8 4.5l1 2.5M16 4.5 15 7"/><rect x="4" y="12" width="16" height="9" rx="2"/><path d="M4 16c2.7 1.3 5.3 1.3 8 0s5.3-1.3 8 0"/></svg></span>
+          <div><h3>Curtir a programação</h3><p>Happy hour de segunda a quinta e karaokê toda sexta.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =================== EVENTOS =================== -->
+<section class="events" id="eventos">
+  <div class="wrap events-grid">
+    <div class="reveal">
+      <p class="eyebrow">Eventos & comemorações</p>
+      <h2>Sua data especial com sabor de Prosa.</h2>
+      <p class="lead">Comemore aqui com quem você ama — ou leve o Prosa até o seu evento.</p>
+    </div>
+    <article class="event-card reveal">
+      <h3>Aniversário no Prosa</h3>
+      <p>Reúna a família e os amigos e comece a comemoração com café fresquinho e uma mesa cheia de gente querida.</p>
+      <ul><li>Aniversários</li><li>Confraternizações</li><li>Encontros</li></ul>
+      <a class="btn btn-light js-wa" data-msg="Olá, Prosa! Quero comemorar meu aniversário aí. Pode me passar as informações?" href="https://wa.me/5521996860795" target="_blank" rel="noopener">Quero comemorar aqui</a>
+    </article>
+    <article class="event-card reveal">
+      <h3>O Prosa vai até você</h3>
+      <p>Levamos nosso carrinho de café para receber seus convidados com sabor e boas conversas.</p>
+      <ul><li>Casamentos</li><li>Aniversários</li><li>Festas</li><li>Empresas</li></ul>
+      <a class="btn btn-light js-wa" data-msg="Olá, Prosa! Gostaria de um orçamento do carrinho para o meu evento." href="https://wa.me/5521996860795" target="_blank" rel="noopener">Solicitar orçamento</a>
+    </article>
+  </div>
+</section>
+
+<!-- =================== NA MÍDIA =================== -->
+<section class="press" aria-label="Na mídia">
+  <div class="wrap reveal">
+    <p class="eyebrow">Na mídia</p>
+    <blockquote>O Prosa participou da matéria do jornal O São Gonçalo em comemoração ao Dia Internacional do Café.</blockquote>
+    <cite>Jornal O São Gonçalo</cite>
+  </div>
+</section>
+
+<!-- =================== VISITE =================== -->
+<section class="visit dark" id="visite">
+  <div class="wrap visit-grid">
+    <div class="reveal">
+      <p class="eyebrow">Visite</p>
+      <h2>Bora prosear?</h2>
+      <p class="addr"><strong>Av. Dr. Humberto Soeiro de Carvalho, 508</strong>Trindade, São Gonçalo — RJ · CEP 24456-250<br>(antiga Av. São Paulo), pertinho da Praça da Trindade</p>
+
+      <!-- Programação confirmada nas publicações do Instagram -->
+      <dl class="agenda">
+        <div><dt>Buffet de café da manhã</dt><dd>Domingos · 8h30 às 11h</dd></div>
+        <div><dt>Almoço</dt><dd>Seg a sex · 11h30 às 16h</dd></div>
+        <div><dt>Happy hour</dt><dd>Seg a qui · 17h às 22h</dd></div>
+        <div><dt>Karaokê</dt><dd>Sextas · a partir das 20h</dd></div>
+      </dl>
+
+      <div class="visit-actions">
+        <a class="btn btn-primary js-wa" data-msg="Olá, Prosa! Gostaria de fazer uma reserva." href="https://wa.me/5521996860795" target="_blank" rel="noopener">WhatsApp (21) 99686-0795</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Dr.+Humberto+Soeiro+de+Carvalho%2C+508+-+Trindade%2C+S%C3%A3o+Gon%C3%A7alo+-+RJ" target="_blank" rel="noopener">Como chegar</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/prosacafebar/" target="_blank" rel="noopener">@prosacafebar</a>
+      </div>
+    </div>
+    <div class="map reveal">
+      <iframe title="Mapa: Prosa Café Bar na Trindade, São Gonçalo" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Av.%20Dr.%20Humberto%20Soeiro%20de%20Carvalho%2C%20508%2C%20Trindade%2C%20S%C3%A3o%20Gon%C3%A7alo%20-%20RJ&amp;z=16&amp;output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CTA FINAL =================== -->
+<section class="final dark">
+  <div class="wrap reveal">
+    <h2>A próxima prosa<br>é <em>aqui.</em></h2>
+    <p>Reserve sua mesa, peça pelo cardápio online ou simplesmente apareça. A gente guarda um café pra você.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary js-wa" data-msg="Olá, Prosa! Gostaria de fazer uma reserva." href="https://wa.me/5521996860795" target="_blank" rel="noopener">Reservar pelo WhatsApp</a>
+      <a class="btn btn-ghost" href="https://prosacafe.pedido.app.br/cardapio" target="_blank" rel="noopener">Ver cardápio</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer dark">
+  <div class="wrap">
+    <a href="#topo" class="brand">
+      <img src="images/logo-prosa.jpg" alt="" width="44" height="44">
+      <span>Prosa<small>Café · Bar</small></span>
+    </a>
+    <nav aria-label="Links do rodapé">
+      <a href="https://www.instagram.com/prosacafebar/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://prosacafe.pedido.app.br/cardapio" target="_blank" rel="noopener">Cardápio</a>
+      <a href="#visite">Localização</a>
+    </nav>
+    <p>© <span id="ano">2026</span> Prosa Café Bar · São Gonçalo, RJ</p>
+  </div>
+</footer>
+
+<!-- Botão flutuante de WhatsApp -->
+<a class="wa-float js-wa" data-msg="Olá, Prosa! Vim pelo site." href="https://wa.me/5521996860795" target="_blank" rel="noopener" aria-label="Conversar com o Prosa no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.4 5 5.2-1.36A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.08.8.82-3-.2-.31a8.2 8.2 0 1 1 6.94 3.84Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.55.12-.16.25-.63.8-.78.96-.14.17-.29.19-.53.06a6.7 6.7 0 0 1-3.34-2.92c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.43l-.75-1.82c-.2-.48-.4-.41-.55-.42h-.47a.9.9 0 0 0-.65.3 2.74 2.74 0 0 0-.86 2.04 4.76 4.76 0 0 0 1 2.53 10.9 10.9 0 0 0 4.17 3.69c1.55.67 2.16.72 2.94.6.47-.07 1.46-.6 1.66-1.18.2-.58.2-1.07.15-1.18-.07-.1-.23-.16-.47-.28Z"/></svg>
+</a>
+
+<script>
+/* ===== CONFIGURAÇÃO: troque aqui o número do WhatsApp (55 + DDD + número) ===== */
+const WHATSAPP = "5521996860795";
+
+// Aplica número + mensagem pré-preenchida em todos os botões .js-wa
+document.querySelectorAll(".js-wa").forEach(a => {
+  const msg = a.dataset.msg ? "?text=" + encodeURIComponent(a.dataset.msg) : "";
+  a.href = "https://wa.me/" + WHATSAPP + msg;
+});
+
+// Header com fundo ao rolar
+const header = document.querySelector(".header");
+const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 20);
+onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
+
+// Menu móvel
+const menuBtn = document.querySelector(".menu-btn");
+const toggleMenu = (open) => {
+  document.body.classList.toggle("menu-open", open);
+  menuBtn.setAttribute("aria-expanded", open);
+  menuBtn.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  header.classList.toggle("scrolled", open || window.scrollY > 20);
+};
+menuBtn.addEventListener("click", () => toggleMenu(!document.body.classList.contains("menu-open")));
+document.querySelectorAll(".mobile-nav a").forEach(a => a.addEventListener("click", () => toggleMenu(false)));
+document.addEventListener("keydown", e => { if (e.key === "Escape") toggleMenu(false); });
+
+// Animações de entrada
+const io = "IntersectionObserver" in window ? new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+}, { threshold: .12, rootMargin: "0px 0px -40px 0px" }) : null;
+document.querySelectorAll(".reveal").forEach(el => io ? io.observe(el) : el.classList.add("in"));
+
+document.getElementById("ano").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
